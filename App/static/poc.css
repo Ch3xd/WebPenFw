@@ -1,0 +1,29 @@
+.add_poc_form{
+    padding-top: 30px;
+}
+.from_ts{
+    font-size: 17px;
+}
+.run_cont{
+    margin-top: 30px;
+}
+.run{
+    display: inline-block;
+    width: 70px;
+    height: 70px;
+    line-height: 70px;
+    text-align: center;
+    border-radius: 50%;
+    font-size: 23px;
+    color: white;
+    cursor: pointer;
+    background-color: #04cb31;
+}
+.run:active{
+    background-color: salmon;
+}
+.tip{
+    border: 1px solid #0b2e13;
+    border-radius: 10px;
+    padding: 10px;
+}

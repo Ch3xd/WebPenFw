@@ -1,0 +1,31 @@
+<nav class="navbar bg-light">
+   <ul class="nav_left navbar-nav">
+       <li class="nav-item">
+           {% if request.path == "/fofa"  %}
+               <a href="/fofa" class="nav-link btn-info nav-on">FOFA</a>
+           {% else %}
+               <a href="/fofa" class="nav-link btn-info">FOFA</a>
+           {% endif %}
+       </li>
+       <li class="nav-item">
+           <a href="###" class="nav-link btn-info">SHODAN</a>
+       </li>
+       <li class="nav-item">
+           <a href="###" class="nav-link btn-info">ZOOEYE</a>
+       </li>
+       <li class="nav-item">
+           {% if request.path == "/poc"  %}
+                <a href="/poc" class="nav-link btn-info nav-on">POC</a>
+           {% else %}
+               <a href="/poc" class="nav-link btn-info">POC</a>
+           {% endif %}
+       </li>
+       <li class="nav-item">
+           {% if request.path == "/Eunm"  %}
+                <a href="/Log" class="nav-link btn-info nav-on">Log</a>
+           {% else %}
+                <a href="/Log" class="nav-link btn-info">Log</a>
+           {% endif %}
+       </li>
+   </ul>
+</nav>

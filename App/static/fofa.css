@@ -1,0 +1,32 @@
+/* 导航 */
+ul.nav_left.navbar-nav{
+    width: 100%;
+}
+.nav_left .nav-item{
+    font-size: 23px;
+    text-align: center;
+    margin-top: 10px;
+}
+.right{
+    padding-bottom: 30px;
+}
+.nav-on{
+    background-color: #138496;
+}
+/*   搜索   */
+.search{
+    padding-top: 20px;
+}
+
+/*   设置界面   */
+#cookie{
+    resize: none;
+    height: 130px;
+}
+.setting_sub{
+    width: 100%;
+}
+/*脚注*/
+.card-footer{
+    text-align: center;
+}

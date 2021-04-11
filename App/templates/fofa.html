@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>首页</title>
+    <link rel="stylesheet" href="../static/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../static/fofa.css">
+    <script src="../static/bootstrap/js/jquery-3.2.1.min.js"></script>
+    <script src="../static/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="../static/bootstrap/js/bootstrap.min.js"></script>
+</head>
+<body>
+    <div class="card-body container">
+        <h1 class="modal-title">信息收集与利用</h1>
+        <div class="row">
+            <div class="col-lg-3">
+               {% include './nav.html' %}
+            </div>
+            <div class="right col-lg-8">
+            {#      小导航      #}
+                <ul class="nav nav-pills" role="tablist">
+                    <li class="nav-item">
+                      <a class="nav-link active" data-toggle="pill" href="#search">搜索</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" data-toggle="pill" href="#setting">设置</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" data-toggle="pill" href="#download">下载</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" data-toggle="pill" href="#fofa">搜索语法</a>
+                    </li>
+                  </ul>
+                <div class="tab-content">
+                    {#        搜索模块          #}
+                    <div id="search" class="container tab-pane active">
+                        <form action="/fofa" method="post" class="search clearfix">
+                            {#            复选框                #}
+                            <div class="form-check float-right">
+                              <label class="form-check-label">
+                                <input type="checkbox" class="form-check-input" value="1" name="is_keep">保存搜索结果
+                              </label>
+                            </div>
+                            {#     搜索       #}
+                            <label for="search">请输入FOFA搜索语法:</label>
+                            <div class="input-group mb-lg-1">
+                                <input class="form-control" placeholder="请输入你的FOFA搜索语法" type="text" id="search" name="fofa">
+                                <div class="input-group-append">
+        {#                            <span class="input-group-text">FOFA</span>#}
+                                    <button type="submit" class="btn btn-primary">FOFA</button>
+                                </div>
+                            </div>
+                        </form>
+                        <p>你的FOFA搜索语法为: {{ workey }}</p>
+                        <p>搜索结果一共有<mark>{{ url_list | length }}</mark>条数据</p>
+                        {% if nologin == True %}
+                            <div class="alert alert-warning">
+                            <strong>提示!</strong> FOFA在未登录状态下最多只能获取10条信息。
+                            </div>
+                        {% endif %}
+                        {% if url_list %}
+                            <div class="list-group">
+                            {% for url in url_list %}
+                                <a class="list-group-item list-group-item-info" href="{{ url }}" target="_blank">{{ url }}</a>
+                            {% endfor %}
+                            </div>
+                        {% else %}
+                            <div class="list-group">
+                            <a class="list-group-item list-group-item-danger" href="###">很遗憾没有搜索到结果</a>
+                            </div>
+                        {% endif %}
+                    </div>
+                    {#       设置模块         #}
+                    <div id="setting" class="container tab-pane fade"><br>
+                        <h3>设置</h3>
+                        <form action="/fofa" method="post">
+                            <div class="form-group">
+                                <label for="cookie">设置Cookie:</label>
+                                <textarea class="form-control" id="cookie" placeholder="请输入你FOFA的COOKIE" name="cookies">{{ cookie_status['cookie'] }}</textarea>
+                            </div>
+                            <button type="submit" class="btn btn-outline-primary setting_sub">提交设置</button>
+                        </form>
+                    {#          cookie设置状态弹框              #}
+                    {% if cookie_status['status'] == True %}
+                        <script>alert('cookie设置成功 ~_~')</script>
+                    {% elif cookie_status['status'] == False %}
+                        <script>alert('cookie设置失败~')</script>
+                    {% endif %}
+                    </div>
+                    {#       下载         #}
+                    <div id="download" class="container tab-pane fade"><br>
+                        <h3>download</h3>
+                        {% for file_name in file_name_list %}
+                            <p class="bg-light">
+                                <a class="text-success" href="/down_file?file_name={{ file_name }}">
+                                    {{ file_name }}
+                                </a>
+                            </p>
+                        {% endfor %}
+                    </div>
+                    {#       语法         #}
+                    <div id="fofa" class="container tab-pane fade"><br>
+                        <h3>fofa语法</h3>
+                        <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+{#    脚注#}
+    {% include 'footer.html' %}
+    </div>
+</body>
+</html>

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>首页</title>
+    <link rel="stylesheet" href="../static/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../static/fofa.css">
+    <link rel="stylesheet" href="../static/poc.css">
+    <script src="../static/bootstrap/js/jquery-3.2.1.min.js"></script>
+    <script src="../static/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="../static/bootstrap/js/bootstrap.min.js"></script>
+</head>
+<body>
+    <div class="card-body container">
+        <h1 class="modal-title">信息收集与利用</h1>
+        <div class="row">
+            <div class="col-lg-3">
+               {% include('nav.html') %}
+            </div>
+            <div class="right col-lg-8">
+                <ul class="nav nav-pills" role="tablist">
+                    <li class="nav-item">
+                        <a class="nav-link active" data-toggle="pill" href="#poc">POC</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-toggle="pill" href="#poc_set">POC_Set</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-toggle="pill" href="#poc_add">POC_Add</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-toggle="pill" href="#readom">Readom</a>
+                    </li>
+                </ul>
+
+                <!-- Tab panes -->
+                <div class="tab-content">
+                    <div id="poc" class="container tab-pane active">
+                        <div class="container-fluid run_cont">
+                            <div class="row">
+                                <div class="col-lg-11 tip">
+                                    <p>你选择的脚本是 = <mark>****.py</mark></p>
+                                    <p>
+                                        *目前支持的功能是一个poc检测多个url, 待开发多个poc检测一个或多个url
+                                    </p>
+                                </div>
+                                <div class="col-lg-1">
+                                    <p class="run">Run</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {#         添加自定义POC脚本           #}
+                    <div id="poc_add" class="container tab-pane fade"><br>
+                        <h4>添加自定义POC脚本</h4>
+                        <form action="###" method="post" class="add_poc_form clearfix">
+                            <div class="form-group float-right">
+                                <input type="text" class="bg-info text-center text-white"><span>&nbsp;POC脚本名称</span>
+                            </div>
+                            <div class="form-group">
+                                  <label for="comment" class="from_ts text-primary">请输入你的poc脚本:</label>
+                              <textarea class="form-control" rows="5" id="comment"></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-outline-primary setting_sub">提交POC</button>
+                        </form>
+                    </div>
+                    {#         POC编写说明           #}
+                    <div id="poc_set" class="container tab-pane fade"><br>
+                        {#     搜索       #}
+                        <label for="search">POC搜索:</label>
+                        <div class="input-group mb-lg-1">
+                            <input class="form-control" placeholder="请输入你POC脚本名称" type="text" id="search" name="fofa">
+                            <div class="input-group-append">
+    {#                            <span class="input-group-text">FOFA</span>#}
+                                <button type="submit" class="btn btn-primary">POC</button>
+                            </div>
+                        </div>
+                    </div>
+                    {#         POC编写说明           #}
+                    <div id="readom" class="container tab-pane fade"><br>
+                        <h4>该系统编写<mark>POC</mark>插件规则~~</h4>
+                        <p>每一个POC脚本都要以<code>run()</code>函数开始运行</p>
+                        <p>以<code>run()</code>返回的数值判定<mark>POC</mark>检测状态</p>
+                        <p>数值对应的状态说明如下</p>
+                        <ul>
+                            <li>1: 表示poc未检测出，可能存在漏洞，需要手工测试</li>
+                            <li>2: 表示poc已经检测出，并且验证失败</li>
+                            <li>3: 表示poc已经检测出，并且验证成功</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+{#    脚注#}
+    <div class="card-footer">@符艺南所有</div>
+    </div>
+</body>
+</html>
